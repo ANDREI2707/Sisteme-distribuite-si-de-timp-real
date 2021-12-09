@@ -39,21 +39,38 @@ void loop() {}
 
 void TaskSerial(void *pvParameters)
 {
+
    Serial.begin(9600);
    byte header = 50;
-   byte mesaj = 0x00;
+   byte mesaj[3] = {0x00,0x00,0x00};
 
    byte buffer_serial = 0x00;
    int index = 0; 
    
    for (;;){if (xSemaphoreTake(mutex, 100) == pdTRUE)
    {
-       xQueuePeek(xQueue,&mesaj,10);
-          if (mesaj == 50) {Serial.println("YEEEY");}
-          
+       //if (xQueueReceive(xQueue,&mesaj,100 ) == pdPASS){
+       //   if (mesaj == 50) {Serial.println("YEEEY");}}
+       
+       xQueuePeek(xQueue,&mesaj[0],10);
+       Serial.println(mesaj[0]);
+          if (mesaj[0] == 50) {Serial.println("YEEEY");
+             if (xQueueReceive(xQueue,&mesaj[0],10 ) == pdPASS){
+                if (xQueueReceive(xQueue,&mesaj[1],10 ) == pdPASS){
+                   if (xQueueReceive(xQueue,&mesaj[2],10 ) == pdPASS){
+                       if (mesaj[0] == 50) {Serial.println("YEEEY");}
+                   }
+                }
+             }
+          }
+       mesaj[0] = 0x00;
+       mesaj[1] = 0x00;
+       mesaj[2] = 0x00;
        buffer_serial = Serial.read();
        if (buffer_serial != 255){
            Serial.println(buffer_serial);
+           xQueueSend(xQueue,&buffer_serial, portMAX_DELAY);
+           xQueueSend(xQueue,&buffer_serial, portMAX_DELAY);
            xQueueSend(xQueue,&buffer_serial, portMAX_DELAY);
        }
        xSemaphoreGive(mutex);
@@ -67,7 +84,7 @@ void TaskSerial(void *pvParameters)
 
 
 
-////////// Testare echou de la PC -> Seriala -> Queue -> Seriala -> PC cu filtrare de valoare 50
+
 
 
 
