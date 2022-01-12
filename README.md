@@ -4,8 +4,7 @@ Scenario 1: A base line scenario is to do read actions and
 check the time it takes from the button press to the actual data
 is received.
 The following data was used:Time to wait after task: 50 / portTICK PERIOD MS; Time to wait for mutex: 2 /portTICK PERIOD MS; Total number of tasks: 3.
-The following data was reseived:
-• Fastest response: 1145.1 ms; Slowest response: 1586.3 ms; Average for 11 measurements: 1395.3 ms.
+The following data was reseived: Fastest response: 1145.1 ms; Slowest response: 1586.3 ms; Average for 11 measurements: 1395.3 ms.
 Scenario 2: Using the data from the previous scenario, the
 second scenario will try to improve the timing by lowering the time it takes for the response by lowering the time to wait
 between tasks.
@@ -21,3 +20,7 @@ processing time for 50 / portTICK PERIOD MS.
 The following data was used:Time to wait after task: 50 / portTICK PERIOD MS; Time to wait for mutex: 2 / portTICK PERIOD MS; Total number of tasks:4 ;Dummy tasks 1; Occupy time: 50 /portTICK PERIOD MS
 The following data was received: Fastest response: 1305.8 ms; Slowest response: 1797.8 ms; Average for 11 measurements: 1514.1 ms
 It is observed a small rise in all the timings, as expected.
+
+Block diagram of the system:
+
+![image](https://user-images.githubusercontent.com/61541965/149101882-1296db1d-bba8-4c12-a216-471512f1ada5.png)
