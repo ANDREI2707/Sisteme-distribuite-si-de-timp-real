@@ -1,4 +1,4 @@
-# Sisteme-distribuite-si-de-timp-real
+**detailed analysis in real time requirements**
 
 Scenario 1: A base line scenario is to do read actions and
 check the time it takes from the button press to the actual data
@@ -21,6 +21,18 @@ The following data was used:Time to wait after task: 50 / portTICK PERIOD MS; Ti
 The following data was received: Fastest response: 1305.8 ms; Slowest response: 1797.8 ms; Average for 11 measurements: 1514.1 ms
 It is observed a small rise in all the timings, as expected.
 
-Block diagram of the system:
+**Block diagram of the system**
 
 ![image](https://user-images.githubusercontent.com/61541965/149101882-1296db1d-bba8-4c12-a216-471512f1ada5.png)
+
+**product specifications**
+
+
+The proposed system is composed of a LM35 temperature
+sensor and a foto-resistor as inputs, an LED and a buzzer
+as outputs, and a central processing unit composed of an
+arduino MEGA2560 board. The system is implemented as a
+fire detection system, since a fire emits heat and light. The
+data colected from the sensors are sent via Serial to a control
+software which can program the thresholds for the sensors and
+to visualize the values.
