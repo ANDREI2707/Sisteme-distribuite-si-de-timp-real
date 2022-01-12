@@ -3,11 +3,7 @@
 Scenario 1: A base line scenario is to do read actions and
 check the time it takes from the button press to the actual data
 is received.
-The following data was used:
-
-• Time to wait after task: 50 / portTICK PERIOD MS
-• Time to wait for mutex: 2 /portTICK PERIOD MS
-• Total number of tasks: 3.
+The following data was used:Time to wait after task: 50 / portTICK PERIOD MS; Time to wait for mutex: 2 /portTICK PERIOD MS; Total number of tasks: 3.
 The following data was reseived:
 • Fastest response: 1145.1 ms
 • Slowest response: 1586.3 ms
